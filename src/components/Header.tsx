@@ -36,6 +36,10 @@ export default function Header() {
               <Phone size={11} />
               +91 98230 31535
             </a>
+            <a href="tel:+919766328233" className="flex items-center gap-1.5 hover:text-[#c45a20] transition-colors font-mono">
+              <Phone size={11} />
+              +91 97663 28233
+            </a>
             <a href="mailto:info@aesindustrial.in" className="hidden sm:flex items-center gap-1.5 hover:text-[#c45a20] transition-colors font-mono">
               <Mail size={11} />
               info@aesindustrial.in

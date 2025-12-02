@@ -1,16 +1,17 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
 import { useRef } from 'react';
 
 const industries = [
-  { id: '01', name: 'STEEL', fullName: 'Steel Industry', description: 'Heavy machinery & maintenance for steel plants' },
-  { id: '02', name: 'POWER', fullName: 'Power Sector', description: 'Equipment for power generation facilities' },
-  { id: '03', name: 'MINING', fullName: 'Mining Operations', description: 'Rugged solutions for mining environments' },
-  { id: '04', name: 'OIL & GAS', fullName: 'Oil & Gas', description: 'Safety-certified petroleum industry tools' },
-  { id: '05', name: 'INFRA', fullName: 'Infrastructure', description: 'Construction & development equipment' },
-  { id: '06', name: 'AUTO', fullName: 'Automotive', description: 'Precision tools for manufacturing' },
-  { id: '07', name: 'ENGG', fullName: 'Engineering', description: 'Solutions for fabrication works' },
+  { id: '01', name: 'STEEL', fullName: 'Steel Industry', description: 'Heavy machinery & maintenance for steel plants', image: 'https://images.unsplash.com/photo-1613970351372-9804e380bd09?w=800&q=80' },
+  { id: '02', name: 'POWER', fullName: 'Power Sector', description: 'Equipment for power generation facilities', image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80' },
+  { id: '03', name: 'MINING', fullName: 'Mining Operations', description: 'Rugged solutions for mining environments', image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?w=800&q=80' },
+  { id: '04', name: 'OIL & GAS', fullName: 'Oil & Gas', description: 'Safety-certified petroleum industry tools', image: 'https://images.unsplash.com/photo-1633829131104-e2134f75c6e5?w=800&q=80' },
+  { id: '05', name: 'INFRA', fullName: 'Infrastructure', description: 'Construction & development equipment', image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80' },
+  { id: '06', name: 'AUTO', fullName: 'Automotive', description: 'Precision tools for manufacturing', image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=80' },
+  { id: '07', name: 'ENGG', fullName: 'Engineering', description: 'Solutions for fabrication works', image: 'https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=800&q=80' },
 ];
 
 export default function Industries() {
@@ -57,7 +58,7 @@ export default function Industries() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.1 * index }}
-                className="group relative bg-[#f5f3ef] border border-[#e8e4dc] hover:border-[#c45a20] transition-all duration-500 aspect-[3/4] overflow-hidden"
+                className="group relative bg-[#f5f3ef] border border-[#e8e4dc] hover:border-[#c45a20] transition-all duration-500 aspect-3/4 overflow-hidden"
               >
                 {/* Number */}
                 <div className="absolute top-4 left-4 text-[#c45a20] font-mono text-xs">
@@ -66,13 +67,23 @@ export default function Industries() {
 
                 {/* Content */}
                 <div className="absolute inset-0 flex flex-col justify-end p-4">
+                  {/* Brand/industry image */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-80 group-hover:opacity-40 transition-opacity duration-300">
+                    <Image
+                      src={industry.image}
+                      alt={`${industry.fullName}`}
+                      width={320}
+                      height={240}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   {/* Short name - visible by default */}
                   <div className="text-2xl font-black text-[#1e3a5f] tracking-tight group-hover:opacity-0 transition-opacity duration-300">
                     {industry.name}
                   </div>
 
                   {/* Full info - visible on hover */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-[#c45a20]/90 to-transparent">
+                  <div className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-t from-[#c45a20]/90 to-transparent">
                     <div className="text-lg font-bold text-white mb-1">{industry.fullName}</div>
                     <div className="text-white/80 text-xs leading-relaxed">{industry.description}</div>
                   </div>
@@ -93,11 +104,22 @@ export default function Industries() {
                   initial={{ opacity: 0, x: 30 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ delay: 0.1 * index }}
-                  className="relative bg-[#f5f3ef] border border-[#e8e4dc] p-6 w-48 shrink-0"
+                  className="relative bg-[#f5f3ef] border border-[#e8e4dc] w-48 shrink-0 overflow-hidden"
                 >
-                  <div className="text-[#c45a20] font-mono text-xs mb-3">{industry.id}</div>
-                  <div className="text-xl font-black text-[#1e3a5f] mb-2">{industry.name}</div>
-                  <div className="text-[#6c757d] text-xs">{industry.fullName}</div>
+                  <div className="absolute top-4 left-4 text-[#c45a20] font-mono text-xs z-10">{industry.id}</div>
+                  <div className="relative h-32 w-full opacity-40">
+                    <Image
+                      src={industry.image}
+                      alt={`${industry.fullName}`}
+                      width={192}
+                      height={128}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <div className="text-xl font-black text-[#1e3a5f] mb-2">{industry.name}</div>
+                    <div className="text-[#6c757d] text-xs">{industry.fullName}</div>
+                  </div>
                 </motion.div>
               ))}
             </div>

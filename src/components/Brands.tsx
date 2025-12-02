@@ -88,7 +88,7 @@ export default function Brands() {
             {[...Array(4)].map((_, i) => (
               <div key={i} className="flex items-center gap-12 mr-12">
                 {brands.map((brand) => (
-                  <span key={brand.name} className="text-xl font-black text-gray-300 tracking-wider flex items-center gap-12">
+                  <span key={brand.name} className="text-xl font-black text-gray-600 tracking-wider flex items-center gap-12">
                     {brand.name}
                     <span className="text-[#c45a20] text-sm">●</span>
                   </span>

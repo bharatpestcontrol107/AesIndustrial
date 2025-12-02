@@ -129,7 +129,7 @@ export default function About() {
             {[...Array(3)].map((_, i) => (
               <div key={i} className="flex items-center gap-8 mr-8">
                 {['LIFTING', 'HANDLING', 'MAINTENANCE', 'SOLUTIONS', 'QUALITY', 'PRECISION'].map((word) => (
-                  <span key={word} className="text-2xl font-black text-gray-200 tracking-widest flex items-center gap-8">
+                  <span key={word} className="text-2xl font-black text-gray-600 tracking-widest flex items-center gap-8">
                     {word}
                     <span className="text-[#c45a20]">◆</span>
                   </span>

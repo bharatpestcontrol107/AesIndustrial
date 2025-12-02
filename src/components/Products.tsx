@@ -126,7 +126,7 @@ export default function Products() {
             >
               {/* Large category number */}
               <div className="relative mb-8">
-                <span className="text-[15vw] lg:text-[12vw] font-black text-[#1e3a5f]/5 leading-none">
+                <span className="text-[15vw] lg:text-[12vw] font-black text-[#1e3a5f]/80 leading-none">
                   {activeCategory.shortName}
                 </span>
                 <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-[#c45a20] to-transparent" />

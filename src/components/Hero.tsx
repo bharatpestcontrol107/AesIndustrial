@@ -1,7 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 import { ArrowDown, Zap } from 'lucide-react';
 
 const stats = [
@@ -12,26 +11,17 @@ const stats = [
 ];
 
 export default function Hero() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end start'],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <section id="home" ref={containerRef} className="relative min-h-screen bg-gradient-to-br from-[#faf8f5] to-[#f0ebe3] overflow-hidden">
+    <section id="home" className="relative min-h-screen bg-linear-to-br from-[#faf8f5] to-[#f0ebe3] overflow-hidden">
       {/* Grid background */}
       <div className="absolute inset-0 steel-mesh" />
       
       {/* Large decorative text */}
       <motion.div 
-        style={{ y }}
         className="absolute top-1/2 left-0 right-0 -translate-y-1/2 overflow-hidden pointer-events-none select-none"
       >
-        <div className="text-[20vw] font-black text-[#1e3a5f]/[0.03] whitespace-nowrap tracking-tighter">
+        <div className="text-[20vw] font-black text-[#1e3a5f]/3 whitespace-nowrap tracking-tighter">
           INDUSTRIAL • SOLUTIONS •
         </div>
       </motion.div>
@@ -39,12 +29,12 @@ export default function Hero() {
       {/* Vertical lines decoration */}
       <div className="absolute inset-0 flex justify-between px-[10%] pointer-events-none">
         {[...Array(5)].map((_, i) => (
-          <div key={i} className="w-px h-full bg-gradient-to-b from-transparent via-[#e8e4dc]/50 to-transparent" />
+          <div key={i} className="w-px h-full bg-linear-to-b from-transparent via-[#e8e4dc]/50 to-transparent" />
         ))}
       </div>
 
       {/* Main content */}
-      <motion.div style={{ opacity }} className="relative z-10 container mx-auto px-4 min-h-screen flex flex-col justify-center py-20">
+      <motion.div className="relative z-10 container mx-auto px-4 min-h-screen flex flex-col justify-center py-20">
         <div className="grid lg:grid-cols-12 gap-8 items-center">
           {/* Left content */}
           <div className="lg:col-span-7">
@@ -92,15 +82,18 @@ export default function Hero() {
               transition={{ delay: 0.6 }}
               className="flex flex-wrap gap-4"
             >
-              <a href="#products" className="group inline-block">
-                <span className="relative z-10 flex items-center gap-2 px-8 py-4 font-bold tracking-widest text-sm text-white bg-[#c45a20] rounded-md shadow-sm transition-transform duration-300 transform group-hover:-translate-y-1 group-hover:shadow-md">
+              <a
+                href="#products"
+                className="group relative bg-[#c45a20] text-white px-8 py-4 font-bold tracking-widest text-sm overflow-hidden transition-colors duration-300 hover:bg-(--steel)"
+              >
+                <span className="relative z-10 flex items-center gap-2 transition-colors duration-300 group-hover:text-white">
                   EXPLORE PRODUCTS
-                  <Zap size={16} className="ml-2 transition-transform transform group-hover:rotate-12" />
+                  <Zap size={16} className="transition-colors duration-300 group-hover:text-white" />
                 </span>
               </a>
               <a
                 href="#contact"
-                className="group border-2 border-[#1e3a5f] text-[#1e3a5f] px-8 py-4 font-bold tracking-[0.1em] text-sm hover:border-[#c45a20] hover:text-[#c45a20] transition-colors"
+                className="group border-2 border-[#1e3a5f] text-[#1e3a5f] px-8 py-4 font-bold tracking-widest text-sm hover:border-[#c45a20] hover:text-[#c45a20] transition-colors"
               >
                 CONTACT US
               </a>
